@@ -1,0 +1,5 @@
+name: 'Homewizard Energy P1 Meter'
+packageKey: 'Homewizard-Energy'
+permissions:
+  lan: {}
+  discovery: {}

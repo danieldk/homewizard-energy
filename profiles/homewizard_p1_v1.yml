@@ -1,0 +1,53 @@
+name: homewizard-p1.v1
+components:
+  - id: main
+    label: "Electric"
+    capabilities:
+      - id: powerMeter
+        version: 1
+      - id: energyMeter
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: CurbPowerMeter
+  - id: info
+    label: "Device Info"
+    capabilities:
+      - id: partyvoice23922.status
+        version: 1
+      - id: partyvoice23922.infotable
+        version: 1
+      - id: partyvoice23922.createanother
+        version: 1
+metadata:
+  ocfDeviceType: x.com.st.d.energymeter
+preferences:
+  - title: "Refresh Frequency"
+    name: refreshfreq
+    description: "Number of seconds"
+    required: true
+    preferenceType: number
+    definition:
+      minimum: 1
+      maximum: 86400
+      default: 30
+  - title: "Device Address"
+    name: deviceaddr
+    description: "LAN IP address of device"
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      minLength: 7
+      maxLength: 15
+      default: "192.168.178.n"
+  - title: "Response Timeout"
+    name: timeout
+    description: "Number of seconds"
+    required: true
+    preferenceType: number
+    definition:
+      minimum: 1
+      maximum: 60
+      default: 3
