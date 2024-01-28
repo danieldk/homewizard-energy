@@ -112,7 +112,9 @@ local function update_device_data(device, data)
   if data then
     if data.power then; device:emit_event(capabilities.powerMeter.power(data.power)); end
     if data.energy then; device:emit_event(capabilities.energyMeter.energy({value=data.energy, unit='kWh'})); end
-    if data.gas then; device:emit_component_event(device.profile.components.gas, capabilities.gasMeter.gasMeterVolume({value=data.gas, unit='m^3'})); end
+    if data.phase1_power then; device:emit_component_event(device.profile.components.phase1, capabilities.powerMeter.power(data.phase1_power)); end
+    if data.phase2_power then; device:emit_component_event(device.profile.components.phase2, capabilities.powerMeter.power(data.phase2_power)); end
+    if data.phase3_power then; device:emit_component_event(device.profile.components.phase3, capabilities.powerMeter.power(data.phase3_power)); end
   end
 
 end
@@ -234,7 +236,6 @@ local function device_added (driver, device)
   local init_datatbl = {
           ['energy'] = 0,
           ['power'] = 0,
-          ['gas'] = 0
         }
   
   update_device_data(device, init_datatbl)

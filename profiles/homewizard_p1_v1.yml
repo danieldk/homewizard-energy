@@ -11,6 +11,27 @@ components:
         version: 1
     categories:
       - name: CurbPowerMeter
+  - id: phase1
+    label: "Phase 1"
+    capabilities:
+    - id: powerMeter
+      version: 1
+    categories:
+    - name: CurbPowerMeter
+  - id: phase2
+    label: "Phase 2"
+    capabilities:
+    - id: powerMeter
+      version: 1
+    categories:
+    - name: CurbPowerMeter
+  - id: phase3
+    label: "Phase 3"
+    capabilities:
+    - id: powerMeter
+      version: 1
+    categories:
+    - name: CurbPowerMeter
   - id: info
     label: "Device Info"
     capabilities:

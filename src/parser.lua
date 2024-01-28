@@ -45,13 +45,14 @@ return {
     local parsed_data = {
                           ['power'] = 0,
                           ['energy'] = 0,
+                          ['phase1_power'] = 0,
+                          ['phase2_power'] = 0,
+                          ['phase3_power'] = 0,
                         }
     if response then
       local datatbl = jsonparse(device, response)
       
       if datatbl then
-        
-        -- expected data format:   {"cnt":"4457,005","pwr":453,"lvl":0,"dev":"","det":"","con":"OK","sts":"(52)","raw":0}
         
         if type(datatbl.active_power_w) == 'number' then
           parsed_data['power'] = math.floor(datatbl.active_power_w * 1000) / 1000
@@ -59,6 +60,18 @@ return {
 
         if type(datatbl.total_power_import_kwh) == 'number' then
           parsed_data['energy'] = math.floor(datatbl.total_power_import_kwh * 1000) / 1000
+        end
+
+        if type(datatbl.active_power_l1_w) == 'number' then
+          parsed_data['phase1_power'] = math.floor(datatbl.active_power_l1_w * 1000) / 1000
+        end
+
+        if type(datatbl.active_power_l2_w) == 'number' then
+          parsed_data['phase2_power'] = math.floor(datatbl.active_power_l2_w * 1000) / 1000
+        end
+
+        if type(datatbl.active_power_l3_w) == 'number' then
+          parsed_data['phase3_power'] = math.floor(datatbl.active_power_l3_w * 1000) / 1000
         end
       end
     end
@@ -74,8 +87,6 @@ return {
 
     if datatbl then
     
-      -- expected data:   {"model":"LS120","mac":"72:b8:ad:14:00:04"}
-
       local infotable = {}
       
       table.insert(infotable, "Model: " .. datatbl.product_type)
