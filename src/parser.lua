@@ -1,5 +1,6 @@
 --[[
   Copyright 2023 Todd Austin
+  Copyright 2024 Daniël de Kok
 
   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file
   except in compliance with the License. You may obtain a copy of the License at:
@@ -48,6 +49,8 @@ return {
                           ['phase1_power'] = 0,
                           ['phase2_power'] = 0,
                           ['phase3_power'] = 0,
+                          ['tariff1_energy'] = 0,
+                          ['tariff2_energy'] = 0,
                         }
     if response then
       local datatbl = jsonparse(device, response)
@@ -72,6 +75,14 @@ return {
 
         if type(datatbl.active_power_l3_w) == 'number' then
           parsed_data['phase3_power'] = math.floor(datatbl.active_power_l3_w * 1000) / 1000
+        end
+
+        if type(datatbl.total_power_import_t1_kwh) == 'number' then
+          parsed_data['tariff1_energy'] = math.floor(datatbl.total_power_import_t1_kwh * 1000) / 1000
+        end
+
+        if type(datatbl.total_power_import_t2_kwh) == 'number' then
+          parsed_data['tariff2_energy'] = math.floor(datatbl.total_power_import_t2_kwh * 1000) / 1000
         end
       end
     end

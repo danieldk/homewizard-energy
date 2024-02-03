@@ -1,5 +1,6 @@
 --[[
   Copyright 2023 Todd Austin
+  Copyright 2024 Daniël de Kok
 
   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file
   except in compliance with the License. You may obtain a copy of the License at:
@@ -115,6 +116,8 @@ local function update_device_data(device, data)
     if data.phase1_power then; device:emit_component_event(device.profile.components.phase1, capabilities.powerMeter.power(data.phase1_power)); end
     if data.phase2_power then; device:emit_component_event(device.profile.components.phase2, capabilities.powerMeter.power(data.phase2_power)); end
     if data.phase3_power then; device:emit_component_event(device.profile.components.phase3, capabilities.powerMeter.power(data.phase3_power)); end
+    if data.tariff1_energy then; device:emit_component_event(device.profile.components.tariff1, capabilities.energyMeter.energy({value=data.tariff1_energy, unit='kWh'})); end
+    if data.tariff2_energy then; device:emit_component_event(device.profile.components.tariff2, capabilities.energyMeter.energy({value=data.tariff2_energy, unit='kWh'})); end
   end
 
 end

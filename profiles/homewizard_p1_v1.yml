@@ -32,6 +32,20 @@ components:
       version: 1
     categories:
     - name: CurbPowerMeter
+  - id: tariff1
+    label: "Tariff 1"
+    capabilities:
+    - id: energyMeter
+      version: 1
+    categories:
+    - name: CurbPowerMeter
+  - id: tariff2
+    label: "Tariff 2"
+    capabilities:
+    - id: energyMeter
+      version: 1
+    categories:
+    - name: CurbPowerMeter
   - id: info
     label: "Device Info"
     capabilities:
