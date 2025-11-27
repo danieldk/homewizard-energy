@@ -1,5 +1,8 @@
 # HomeWizard Energy P1 Meter SmartThings Edge Driver
 
+**Warning:** This repository is archived, I do not use SmartThings
+anymore. Home Assistant and Homey are _much_ nicer.
+
 This repository provides a SmartThings Edge driver for the [HomeWizard WiFi P1
 Meter](https://www.homewizard.com/p1-meter/). This is a smart meter reader that
 works with P1 ports (DSMR) on smart meters, which are common in the Netherlands.
